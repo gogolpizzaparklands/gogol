@@ -41,9 +41,9 @@ export default function ProductCard({ product }){
   return (
     <div className="bg-white p-4 rounded shadow flex flex-col">
       {((product.coverImage && product.coverImage.url) || (product.images && product.images[0])) ? (
-        <img src={(product.coverImage && product.coverImage.url) || (product.images && product.images[0].url)} alt={product.name} className="w-full h-40 object-cover rounded" />
+        <img src={(product.coverImage && product.coverImage.url) || (product.images && product.images[0].url)} alt={product.name} className="w-full h-40 sm:h-48 md:h-56 object-cover rounded" />
       ) : (
-        <div className="w-full h-40 bg-gray-200 rounded" />
+        <div className="w-full h-40 sm:h-48 md:h-56 bg-gray-200 rounded" />
       )}
       <h3 className="mt-2 font-semibold">{product.name}</h3>
       <p className="text-sm text-gray-600">KSh {product.price}</p>

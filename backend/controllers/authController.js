@@ -93,7 +93,9 @@ exports.register = async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax'
+      // For production (frontend and backend on different origins) we need SameSite=None
+      // and Secure=true so browsers allow the cookie on cross-site POST requests.
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
     });
     res.json({ user: { id: user._id, name: user.name, email: user.email, role: user.role, phone: user.phone } });
   } catch (err) {
@@ -138,7 +140,7 @@ exports.login = async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax'
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
     });
     res.json({ user: { id: user._id, name: user.name, email: user.email, role: user.role } });
   } catch (err) {
@@ -172,7 +174,7 @@ exports.verifySellerCode = async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax'
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
     });
     sellerCodes.delete(email);
     res.json({ user: { id: user._id, name: user.name, email: user.email, role: user.role } });
@@ -205,6 +207,6 @@ exports.me = async (req, res) => {
 };
 
 exports.logout = async (req, res) => {
-  res.clearCookie('token', { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'lax' });
+  res.clearCookie('token', { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax' });
   res.json({ msg: 'Logged out' });
 };

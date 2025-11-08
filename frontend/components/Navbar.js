@@ -86,7 +86,8 @@ export default function Navbar(){
 
       {/* mobile menu panel */}
       <div className={`md:hidden ${open ? 'block' : 'hidden'} border-t bg-white`}>
-        <div className="px-4 pt-2 pb-4 space-y-2">
+        {/* ensure mobile menu is scrollable on small screens and won't exceed viewport height */}
+        <div className="px-4 pt-2 pb-4 space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <Link href="/menu" className={`block ${pathname === '/menu' ? 'bg-red-50 text-red-700' : 'hover:bg-gray-50' } px-2 py-2 rounded`}>Menu</Link>
           {user && user.role === 'seller' && <Link href="/seller" className={`block ${pathname === '/seller' ? 'bg-red-50 text-red-700' : 'hover:bg-gray-50' } px-2 py-2 rounded`}>Seller</Link>}
           {user && user.role === 'client' && (

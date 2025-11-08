@@ -45,7 +45,8 @@ export default function ProductEditModal({ product, open, onClose }){
 
   return (
     <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/40">
-      <form onSubmit={submit} className="bg-white rounded shadow max-w-xl w-full p-4">
+      {/* modal uses max-height and internal scroll on small screens */}
+      <form onSubmit={submit} className="bg-white rounded shadow w-full max-w-xl sm:mx-4 mx-2 p-4 max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold">Edit Product</h3>
           <button type="button" onClick={onClose} className="text-gray-600">✕</button>

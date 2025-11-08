@@ -26,7 +26,8 @@ export default function ProductDetailsModal({ product, open, onClose, onAdd }){
 
   return (
     <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/40">
-      <div className="bg-white rounded shadow max-w-2xl w-full p-4">
+      {/* On small screens allow modal to use most of viewport and scroll internally */}
+      <div className="bg-white rounded shadow w-full max-w-2xl sm:max-w-lg md:max-w-2xl p-4 max-h-[90vh] overflow-y-auto mx-4">
         <div className="flex items-start justify-between">
           <h2 className="text-xl font-semibold">{product.name}</h2>
           <button onClick={onClose} className="text-gray-600">✕</button>
