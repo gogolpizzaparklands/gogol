@@ -159,7 +159,7 @@ export default async function Home(){
         </div>
       </section>
 
-      <footer className="max-w-7xl mx-auto px-6 mt-12 text-center text-sm text-gray-600">© {new Date().getFullYear()} GoGol Pizza • Parklands, Nairobi • Contact: +254 7XX XXX XXX</footer>
+      <footer className="max-w-7xl mx-auto px-6 mt-12 text-center text-sm text-gray-600">© {new Date().getFullYear()} GoGol Pizza • Parklands, Nairobi • Contact: +254718144444</footer>
     </main>
   )
 }
